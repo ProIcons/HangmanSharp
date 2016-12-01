@@ -204,7 +204,7 @@ public delegate void HangmanSecondElapsedEventHandler(HangmanGameState state);
 ##[Methods](#methods-3)
 Method | Modifier | Return Type | Parameters
 ------ | -------- | ----------- | ----------
-[HangmanDifficulty](#hangmandifficulty) | | Constructor | String, int, int, bool, int
+[HangmanDifficulty](#hangmandifficultystringintintboolint) | | Constructor | String, int, int, bool, int
 [ToString](#hangmandifficultytostring) | | String | void
 
 ##[Properties](#properties-3)
