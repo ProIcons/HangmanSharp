@@ -14,8 +14,8 @@ Class | Methods | Properties | Events
 ## Enums
 Enums | Values
 ----- | ------
-[HangmanState](#hangmanstate-enum) | 5
-[HangmanResult](#hangmanresult-enum) | 6
+[HangmanState](#hangmanstate-enum) | [5](#values)
+[HangmanResult](#hangmanresult-enum) | [6](#values-1)
 
 ## Exceptions
 
@@ -280,6 +280,107 @@ Returns a hard HangmanDifficulty Object.
 ### HangmanDifficulty.Extreme
 Returns an extreme HangmanDifficulty Object.
 
+---
+
+# HangmanGameReport Class
+
+##[Properties](#properties-5)
+Property | Modifier | Return Type
+-------- | -------- | -----------
+[Result](#hangmangamereportresult) | | HangmanResult
+[Word](#hangmangamereportword) | | String
+[State](#hangmangamereportstate) | | HangmanGameState
+
+---
+
+##Properties
+
+### HangmanGameReport.Result
+Returns a HangmanResult enum value.
+
+### HangmanGameReport.Word
+Returns a String containing the game's word.
+
+### HangmanGameReport.State
+Returns a HangmanGameState object.
+
+---
+
+# HangmanGameState Class
+
+##[Properties](#properties-7)
+Property | Modifier | Return Type
+-------- | -------- | -----------
+[TimeElapsed](#hangmangamestatetimeelapsed) | | TimeSpan
+[Difficulty](#hangmangamestatedifficulty) | | [HanngmanDifficulty](#hangmandifficulty-class)
+[DisplayWord](#hangmangamestatedisplayword) | | String
+[CorrectLetters](#hangmangamestatecorrectletters) | | List\<String\>
+[IncorrectLetters](#hangmangamestateincorrectletters) | | List\<String\>
+[CorrectAttempts](#hangmangamestatecorrectattempts) | | int
+[FailedAttemmpts](#hangmangamestatefailedattempts) | | int
+[TotalLetters](#hangmangamestatetotalletters) | | int
+[FoundLetters](#hangmangamestatefoundletters) | | int
+[State](#hangmangamestatestate) | | [HangmanState](#hangmanstate-enum)
+
+
+##Properties
+
+### HangmanGameState.TimeElapsed
+Returns a TimeSpan with the time elapsed from start since this game state.
+
+### HangmanGameState.Difficulty
+Returns a HangmanDifficulty object with the game's difficulty.
+
+### HangmanGameState.DisplayWord
+Returns a String with the hidden word beeing dashed and spaced only with the found letters.
+
+### HangmanGameState.CorrectLetters
+Returns a String List with all the correct letters found in this game session.
+
+### HangmanGameState.IncorrectLetters
+Returns a String List with all the incorrect letters found in this game session.
+
+### HangmanGameState.TotalLetters
+Returns the length of the word.
+
+### HangmanGameState.FoundLetters
+Returns the number of found letters on the hidden word.
+
+### HangmanGameState.State
+Returns a HangmanState enum value.
+
+### HangmanGameState.CorrectAttempts
+Returns the number of correct attempts.
+
+### HangmanGameState.FailedAttempts
+Returns the number of failed attempts.
+
+---
+
+# HangmanState Enum
+
+##Values
+Name | Value
+---- | ----- 
+LetterTried | 0
+SolveTried | 1
+Started | 2
+Stopped | 3
+Finished | 4
+
+---
+
+# HangmanResult Enum
+
+##Values
+Name | Value
+---- | ----- 
+WonByGuessing | 0
+WonByTrying| 1
+LostTimeout | 2
+LostErrors | 3
+LostByGuessing | 4
+Stopped | 5
 
 
 <p align="center"><img src ="https://cloud.githubusercontent.com/assets/3339081/20802776/d05d9b28-b7f5-11e6-9657-bd8826f9a4a5.gif"/></p>
