@@ -382,7 +382,22 @@ LostErrors | 3
 LostByGuessing | 4
 Stopped | 5
 
+---
+
+# Examples
+
+---
+
+##Console
+
 
 <p align="center"><img src ="https://cloud.githubusercontent.com/assets/3339081/20802776/d05d9b28-b7f5-11e6-9657-bd8826f9a4a5.gif"/></p>
+
+
+---
+
+
+## GUI
+
 
 <p align="center"><img src ="https://cloud.githubusercontent.com/assets/3339081/20802821/f46e9fe4-b7f5-11e6-9dcb-c333b0ebaf78.gif" /></p>
