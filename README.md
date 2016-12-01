@@ -123,7 +123,7 @@ Raises an OnAttempt event.
 ```cs
 HangmanGame _gameHandler = new HangmanGame(HangmanDifficulty.Easy);
 _gameHandler.StartGame();
-_gameHandler.TryLetter("Test");
+_gameHandler.TrySolve("Test");
 ```
 **Throws** HangmanException if string is not in [a-Z] range.
 
