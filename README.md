@@ -7,9 +7,9 @@ A library for integrating Hangman game in different projects.
 Class | Methods | Properties | Events
 ----- | ------- | ---------- | ------
 [HangmanGame](#hangmangame-class) | [5](#methods) | [11](#properties) | [4](#events)
-[HangmanDifficulty](#hangmandifficulty-class) | 2 | 6 | 0 
-[HangmanGameReport](#hangmangamereport-class) | 0 | 2 | 0
-[HangmanGameState](#hangmangamestate-class) | 0 | 10 | 0
+[HangmanDifficulty](#hangmandifficulty-class) | [2](#methods-2) | [6](#properties-2) | 0 
+[HangmanGameReport](#hangmangamereport-class) | 0 | [2](#properties-4) | 0
+[HangmanGameState](#hangmangamestate-class) | 0 | [10](#properties-6) | 0
 
 ## Enums
 Enums | Values
@@ -61,6 +61,7 @@ Event | Parameters
 [OnAttempt](#hangmangameonattempt) | [HangmanGameState](#hangmangamestate-class)
 [OnSecondElapsed](#hangmangameonsecondelapsed) | [HangmanGameState](#hangmangamestate-class)
 
+---
 
 ##Methods
 
@@ -129,7 +130,7 @@ _gameHandler.TryLetter("Test");
 **Throws** HangmanGameNotStartedException if game is not started.
 
 
-
+---
 
 ##Properties
 
@@ -168,7 +169,7 @@ Returns a String List with all the incorrect letters found in this game session.
 Returns a List type of [HangmanGameReport](#hangmangamereport-class) containing all the previous game records.
 
 
-
+---
 
 ##Events
 
@@ -196,17 +197,90 @@ Event triggered every second after the game is started. Used for Timeout Checkin
 public delegate void HangmanSecondElapsedEventHandler(HangmanGameState state);
 ```
 
+---
+
 # HangmanDifficulty Class
 
-### HangmanDifficulty Class
-Method | Return Type | Parameters
------- | ----------- | ----------
+##[Methods](#methods-3)
+Method | Modifier | Return Type | Parameters
+------ | -------- | ----------- | ----------
+[HangmanDifficulty](#hangmandifficulty) | | Constructor | String, int, int, bool, int
+[ToString](#hangmandifficultytostring) | | String | void
 
-Initialize the object with a Difficulty
+##[Properties](#properties-3)
+Property | Modifier | Return Type
+-------- | -------- | -----------
+[Name](#hangmandifficultyname) | | String
+[ToleretableErrors](#hangmandifficultytoleretableerrors) | | int
+[MinimumLetters](#hangmandifficultyminimumletters) | | int
+[IsTimeLimited](#hangmandifficultyistimelimited) | | bool
+[TimeLimit](#hangmandifficultytimelimit) | | int
+[List](#hangmandifficultylist) | Static | List\<HangmanDifficulty\>
+[Easy](#hangmandifficultyeasy) | Static | HangmanDifficulty
+[Medium](#hangmandifficultymedium) | Static | HangmanDifficulty
+[Hard](#hangmandifficultyhard) | Static | HangmanDifficulty
+[Extreme](#hangmandifficultyextreme) | Static | HangmanDifficulty
+
+---
+
+##Methods
+
+### HangmanDifficulty(string,int,int,bool,int)
+Initializes a HangmanDifficulty object with user defined game constraints
+
+Parameters:
+
+Type | Name | Constraints | Description
+---- | ---- | ----------- | -----------
+String | Name | | Defines the name of the Difficulty
+int | toleretableErrors | [0-6] | Defines the maximum toleretable errors a user can do.
+int | minimumLetters | [4-20] | Defines the minimum letter count.
+bool | isTimeLimited | true/false | Defines whether the game will be time limited. [Optional]
+int | TimeLimit | [0-3600] | Defines the time limit in seconds. [Optional]
 
 ```cs
-HangmanGame gameHandler = new HangmanGame(HangmanDifficulty.Easy);
- ```
+HangmanDifficulty difficulty = new HangmanDifficulty("Custom Difficulty",1,10,true,300);
+HangmanGame _gameHandler = new HangmanGame(difficulty);
+```
+
+### HangmanDifficulty.ToString()
+Returns a String with Object's information.
+
+---
+
+##Properties
+
+### HangmanDifficulty.Name
+Returns the Difficulty name.
+
+### HangmanDifficulty.ToleretableErrors
+Returns the maximum Toleretable Errors.
+
+### HangmanDifficulty.MinimumLetters
+Returns the minimum word letters.
+
+### HangmanDifficulty.IsTimeLimited
+Returns whether the game's difficulty is time limited.
+
+### HangmanDifficulty.TimeLimit
+Returns the time limit in seconds
+
+### HangmanDifficulty.List
+Returns a List of HangmanDifficulty Objects.
+
+### HangmanDifficulty.Easy
+Returns an easy HangmanDifficulty Object.
+
+### HangmanDifficulty.Medium
+Returns a medium HangmanDifficulty Object.
+
+### HangmanDifficulty.Hard
+Returns a hard HangmanDifficulty Object.
+
+### HangmanDifficulty.Extreme
+Returns an extreme HangmanDifficulty Object.
+
+
 
 <p align="center"><img src ="https://cloud.githubusercontent.com/assets/3339081/20802776/d05d9b28-b7f5-11e6-9657-bd8826f9a4a5.gif"/></p>
 
