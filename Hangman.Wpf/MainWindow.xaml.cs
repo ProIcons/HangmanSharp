@@ -131,7 +131,7 @@ namespace devian.gr.Hangman.Wpf
             };
             RulesButton.Click += (sender, args) =>
             {
-                //rules
+                MessageBox.Show(_hangmanHandler.Rules);
             };
             SolveTextBox.TextChanged += (sender, args) =>
             {
