@@ -26,9 +26,10 @@ HangmanGameAlreadyStartedException |
 HangmanGameNotStartedException |
 HangmanGameUnableToStartException |
 
-### HangmanGame Class
 
-####Methods
+# HangmanGame Class
+
+##Methods
 Method | Modifier | Return Type | Parameters
 ------ | -------- | ----------- | ----------
 [HangmanGame](#hangmangame-hangmandifficulty) | | Constructor | [HanngmanDifficulty](#hangmandifficulty-class)
@@ -37,7 +38,7 @@ Method | Modifier | Return Type | Parameters
 [TryLetter](#hangmangametryletter-char--string) | | void | char/string
 [TrySolve](#hangmangametrysolve-string) | | void | String
 
-####Properties
+##Properties
 Property | Modifier | Return Type
 -------- | -------- | -----------
 [Rules](#hangmangamerules) | | String
@@ -52,7 +53,7 @@ Property | Modifier | Return Type
 [IncorrectLetters](#hangmangameincorrectletters) | | List\<String\>
 [History](#hangmangamehistory) | | List\<[HangmanGameReport](#hangmangamereport-class)\>
 
-####Events
+##Events
 Event | Parameters
 ----- | ----------
 [OnFinish](#hangmangameonfinish) | [HangmanGameReport](#hangmangamereport-class)
@@ -127,6 +128,9 @@ _gameHandler.TryLetter("Test");
 
 **Throws** HangmanGameNotStartedException if game is not started.
 
+
+
+
 ##Properties
 
 ###HangmanGame.Rules
@@ -163,6 +167,9 @@ Returns a String List with all the incorrect letters found in this game session.
 ###HangmanGame.History
 Returns a List type of [HangmanGameReport](#hangmangamereport-class) containing all the previous game records.
 
+
+
+
 ##Events
 
 ###HangmanGame.OnFinish
@@ -189,7 +196,7 @@ Event triggered every second after the game is started. Used for Timeout Checkin
 public delegate void HangmanSecondElapsedEventHandler(HangmanGameState state);
 ```
 
-## HangmanDifficulty Class
+# HangmanDifficulty Class
 
 ### HangmanDifficulty Class
 Method | Return Type | Parameters
