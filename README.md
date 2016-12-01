@@ -7,31 +7,61 @@ A library for integrating Hangman game in different projects.
 Class | Methods | Properties | Events
 ----- | ------- | ---------- | ------
 [HangmanGame](#hangmangame-class) | 5 | 11 | 4
-[HanngmanDifficulty](#hangmandifficulty-class) | 2 | 6 | 0 
+[HangmanDifficulty](#hangmandifficulty-class) | 2 | 6 | 0 
+[HangmanGameReport](#hangmangamereport-class) | 0 | 2 | 0
+[HangmanGameState](#hangmangamestate-class) | 0 | 10 | 0
+
+## Enums
+Enums | Values
+----- | ------
+[HangmanState](#hangmanstate-enum) | 5
+[HangmanResult](#hangmanresult-enum) | 6
+
+## Exceptions
+
+Exception | 
+--------- |
+HangmanException |
+HangmanGameAlreadyStartedException |
+HangmanGameNotStartedException |
+HangmanGameUnableToStartException |
 
 ### HangmanGame Class
+
+####Methods
 Method | Modifier | Return Type | Parameters
 ------ | -------- | ----------- | ----------
 [HangmanGame](#hangmangame-hangmandifficulty) | | Constructor | [HanngmanDifficulty](#hangmandifficulty-class)
-[StartGame](#hangmangame-startgame-string--null) | | void | String/void
-[StopGame](#hamemangame-stopgame-void) | | void | void
-[TryLetter](#hangmangame-tryletter-char--string) | | void | char/string
-[TrySolve](#hangmangame-trysolve-string) | | void | String
+[StartGame](#hangmangamestartgame-string--null) | | void | String/void
+[StopGame](#hangmangamestopgame-void) | | void | void
+[TryLetter](#hangmangametryletter-char--string) | | void | char/string
+[TrySolve](#hangmangametrysolve-string) | | void | String
 
+####Properties
 Property | Modifier | Return Type
 -------- | -------- | -----------
-[Rules](#hanmangame-rules) | | String
-[WonGames](#hangmangame-wongames) | | int
-[LostGames](#hangmangame-lostgames) | | int
-[TimeElapsed](#hangmangame-timeelapsed) | | TimeSpan
-[Difficulty](#hangmangame-difficulty) | | [HanngmanDifficulty](#hangmandifficulty-class)
-[IsGameStarted](#hangmangame-isgamestarted) | | bool
-[GivenWord](#hangmangame-givenword) | | String
-[DisplayWord](#hangmangame-displayword) | | String
-[CorrectLetters](#hangmangame-correctletters-list-string) | | List\<String\>
-[IncorrectLetters](#hangmangame-incorrectletters-list-string) | | List\<String\>
-[History](#hangmangame-history-list-hangmangamereport) | | List\<[HangmanGameReport](#hangmangamereport-class)\>
+[Rules](#hangmangamerules) | | String
+[WonGames](#hangmangamewongames) | | int
+[LostGames](#hangmangamelostgames) | | int
+[TimeElapsed](#hangmangametimeelapsed) | | TimeSpan
+[Difficulty](#hangmangamedifficulty) | | [HanngmanDifficulty](#hangmandifficulty-class)
+[IsGameStarted](#hangmangameisgamestarted) | | bool
+[GivenWord](#hangmangamegivenword) | | String
+[DisplayWord](#hangmangamedisplayword) | | String
+[CorrectLetters](#hangmangamecorrectletters) | | List\<String\>
+[IncorrectLetters](#hangmangameincorrectletters) | | List\<String\>
+[History](#hangmangamehistory) | | List\<[HangmanGameReport](#hangmangamereport-class)\>
 
+####Events
+Event | Parameters
+----- | ----------
+[OnFinish](#hangmangameonfinish) | [HangmanGameReport](#hangmangamereport-class)
+[OnStart](#hangmangameonstart) | [HangmanGameState](#hangmangamestate-class)
+[OnAttempt](#hangmangameonattempt) | [HangmanGameState](#hangmangamestate-class)
+[OnSecondElapsed](#hangmangameonsecondelapsed) | [HangmanGameState](#hangmangamestate-class)
+
+
+##Methods
 
 ### HangmanGame (HangmanDifficulty)
 Initializes a HangmanGame object with a defined Difficulty Level
@@ -97,6 +127,67 @@ _gameHandler.TryLetter("Test");
 
 **Throws** HangmanGameNotStartedException if game is not started.
 
+##Properties
+
+###HangmanGame.Rules
+Returns a String with the rules of the game and available Difficulties.
+
+###HangmanGame.WonGames
+Returns an Integer with the won games;
+
+###HangmanGame.LostGames
+Returns an Integer with the lost games;
+
+###HangmanGame.TimeElapsed
+Returns a TimeSpan with the time elapsed since the game started;
+
+###HangmanGame.Difficulty
+Returns a [HangmanDifficulty](#hangmandifficulty-class) Object with the Difficulty of the currect active game.
+Sets the Difficulty of the next game. If game is active it will get changed after game finishes.
+
+###HangmanGame.IsGameStarted
+Returns a Boolean with game's current active state.
+
+###HangmanGame.GivenWord
+Returns a String with the hidden word.
+
+###HangmanGame.DisplayWord
+Returns a String with the hidden word beeing dashed and spaced only with the found letters.
+
+###HangmanGame.CorrectLetters
+Returns a String List with all the correct letters found in this game session.
+
+###HangmanGame.IncorrectLetters
+Returns a String List with all the incorrect letters found in this game session.
+
+###HangmanGame.History
+Returns a List type of [HangmanGameReport](#hangmangamereport-class) containing all the previous game records.
+
+##Events
+
+###HangmanGame.OnFinish
+Event triggered when the game stops for any reason. Event emmits a HangmanGameReport object.
+```cs
+public delegate void HangmanGameFinishedEventHandler(HangmanGameReport report);
+```
+
+###HangmanGame.OnStart
+Event triggered when the game starts. Event emmits a HangmanGameState object.
+```cs
+public delegate void HangmanGameStartedEventHandler(HangmanGameState state);
+```
+
+###HangmanGame.OnAttempt
+Event triggered when TrySolve or TryLetter is invoked. Event emmits a HangmanGameState object.
+```cs
+public delegate void HangmanAttemptEventHandler(HangmanGameState state);
+```
+
+###HangmanGame.OnSecondElapsed
+Event triggered every second after the game is started. Used for Timeout Checking, and Time calculating. Event emmits a HangmanGameState object.
+```cs
+public delegate void HangmanSecondElapsedEventHandler(HangmanGameState state);
+```
 
 ## HangmanDifficulty Class
 
