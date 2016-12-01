@@ -7,7 +7,7 @@
     <ProjectGuid>{0E1815B4-0353-4B85-BFCA-0AA47A249C9C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hangman.Wpf</RootNamespace>
+    <RootNamespace>devian.gr.Hangman.Wpf</RootNamespace>
     <AssemblyName>Hangman.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gu.Wpf.NumericInput, Version=0.5.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gu.Wpf.NumericInput.0.5.1.4\lib\net45\Gu.Wpf.NumericInput.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="HangmanDifficultyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +70,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HangmanDifficultyWindow.xaml.cs">
+      <DependentUpon>HangmanDifficultyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +97,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +106,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Hangman\Hangman-0.png" />
+    <Resource Include="Resources\Hangman\Hangman-1.png" />
+    <Resource Include="Resources\Hangman\Hangman-2.png" />
+    <Resource Include="Resources\Hangman\Hangman-3.png" />
+    <Resource Include="Resources\Hangman\Hangman-4.png" />
+    <Resource Include="Resources\Hangman\Hangman-5.png" />
+    <Resource Include="Resources\Hangman\Hangman-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hangman\Hangman.csproj">
+      <Project>{95dad948-b4c9-4c59-afaf-49b4c55e814e}</Project>
+      <Name>Hangman</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

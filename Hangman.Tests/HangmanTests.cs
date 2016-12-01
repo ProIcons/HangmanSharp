@@ -13,7 +13,7 @@ using devian.gr.Hangman;
 using devian.gr.Hangman.Exceptions;
 using NUnit.Framework.Constraints;
 
-namespace gr.devian.Hangman.Tests
+namespace devian.gr.Hangman.Tests
 {
     [TestFixture]
     public class HangmanTests
