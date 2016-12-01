@@ -13,10 +13,25 @@ Class | Methods | Properties | Events
 Method | Modifier | Return Type | Parameters
 ------ | -------- | ----------- | ----------
 [HangmanGame](#hangmangame-hangmandifficulty) | | Constructor | [HanngmanDifficulty](#hangmandifficulty-class)
-[StartGame](#startgame-string--null) | | void | String/void
-[StopGame](#stopgame-void) | | void | void
-[TryLetter](#tryletter-char--string) | | void | char/string
-[TrySolve](#tryletter-solve) | | void | String
+[StartGame](#hangmangame-startgame-string--null) | | void | String/void
+[StopGame](#hamemangame-stopgame-void) | | void | void
+[TryLetter](#hangmangame-tryletter-char--string) | | void | char/string
+[TrySolve](#hangmangame-trysolve-string) | | void | String
+
+Property | Modifier | Return Type
+-------- | -------- | -----------
+[Rules](#hanmangame-rules) | | String
+[WonGames](#hangmangame-wongames) | | int
+[LostGames](#hangmangame-lostgames) | | int
+[TimeElapsed](#hangmangame-timeelapsed) | | TimeSpan
+[Difficulty](#hangmangame-difficulty) | | [HanngmanDifficulty](#hangmandifficulty-class)
+[IsGameStarted](#hangmangame-isgamestarted) | | bool
+[GivenWord](#hangmangame-givenword) | | String
+[DisplayWord](#hangmangame-displayword) | | String
+[CorrectLetters](#hangmangame-correctletters-list-string) | | List\<String\>
+[IncorrectLetters](#hangmangame-incorrectletters-list-string) | | List\<String\>
+[History](#hangmangame-history-list-hangmangamereport) | | List\<[HangmanGameReport](#hangmangamereport-class)\>
+
 
 ### HangmanGame (HangmanDifficulty)
 Initializes a HangmanGame object with a defined Difficulty Level
@@ -24,7 +39,7 @@ Initializes a HangmanGame object with a defined Difficulty Level
 HangmanGame _gameHandler = new HangmanGame(HangmanDifficulty.Easy);
 ```
 
-###StartGame (String = null)
+###HangmanGame.StartGame (String = null)
 Starts the game with a random word fetched from a word provider service. If parameter is defined starts the game with the word defined.
 
 Without parameter
@@ -41,7 +56,7 @@ _gameHandler.StartGame("test");
 **Throws** HangmanGameAlreadyStartedException if game is already started.
 **Throws** HangmanGameUnableToStartException if word provider is offline and no parameter is given.
 
-###StopGame (void)
+###HangmanGame.StopGame (void)
 Stops the game if is started. When it stops the game, a point to LostGames is beeing added.
 ```cs
 HangmanGame _gameHandler = new HangmanGame(HangmanDifficulty.Easy);
@@ -50,14 +65,38 @@ _gameHandler.StopGame();
 ```
 **Throws** HangmanGameNotStartedException if game is already started.
 
-###TryLetter (char / string)
+###HangmanGame.TryLetter (char / string)
 If game is started it tries to find a letter on the word. 
+
 Raises an OnAttempt event.
 ```cs
 HangmanGame _gameHandler = new HangmanGame(HangmanDifficulty.Easy);
 _gameHandler.StartGame();
 _gameHandler.TryLetter('c');
+_gameHandler.TryLetter("a");
 ```
+**Throws** HangmanException if char is not in [a-Z] range.
+
+**Throws** HangmanException if string is more than 1 character.
+
+**Throws** HangmanException if string is not in [a-Z] range.
+
+**Throws** HangmanGameNotStartedException if game is not started.
+
+###HangmanGame.TrySolve (string)
+If game is started it tries to solve the game. If guess is correct player wins the game, and a point is added on WonGames, otherwise a point is added on LostGames
+
+Raises an OnAttempt event. 
+
+```cs
+HangmanGame _gameHandler = new HangmanGame(HangmanDifficulty.Easy);
+_gameHandler.StartGame();
+_gameHandler.TryLetter("Test");
+```
+**Throws** HangmanException if string is not in [a-Z] range.
+
+**Throws** HangmanGameNotStartedException if game is not started.
+
 
 ## HangmanDifficulty Class
 
