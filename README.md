@@ -6,7 +6,7 @@ A library for integrating Hangman game in different projects.
 ## Classes
 Class | Methods | Properties | Events
 ----- | ------- | ---------- | ------
-[HangmanGame](#hangmangame-class) | 5 | 11 | 4
+[HangmanGame](#hangmangame-class) | [5](#methods) | [11](#properties) | [4](#events)
 [HangmanDifficulty](#hangmandifficulty-class) | 2 | 6 | 0 
 [HangmanGameReport](#hangmangamereport-class) | 0 | 2 | 0
 [HangmanGameState](#hangmangamestate-class) | 0 | 10 | 0
@@ -29,7 +29,7 @@ HangmanGameUnableToStartException |
 
 # HangmanGame Class
 
-##Methods
+##[Methods](#methods-1)
 Method | Modifier | Return Type | Parameters
 ------ | -------- | ----------- | ----------
 [HangmanGame](#hangmangame-hangmandifficulty) | | Constructor | [HanngmanDifficulty](#hangmandifficulty-class)
@@ -38,7 +38,7 @@ Method | Modifier | Return Type | Parameters
 [TryLetter](#hangmangametryletter-char--string) | | void | char/string
 [TrySolve](#hangmangametrysolve-string) | | void | String
 
-##Properties
+##[Properties](#properties-1)
 Property | Modifier | Return Type
 -------- | -------- | -----------
 [Rules](#hangmangamerules) | | String
@@ -53,7 +53,7 @@ Property | Modifier | Return Type
 [IncorrectLetters](#hangmangameincorrectletters) | | List\<String\>
 [History](#hangmangamehistory) | | List\<[HangmanGameReport](#hangmangamereport-class)\>
 
-##Events
+##[Events](#events-1)
 Event | Parameters
 ----- | ----------
 [OnFinish](#hangmangameonfinish) | [HangmanGameReport](#hangmangamereport-class)
