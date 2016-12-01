@@ -1,7 +1,7 @@
-# Hangman
+# Hangman Game Library (.NET)
 [![Build status](https://ci.appveyor.com/api/projects/status/xxcqqkb32alb2glc?svg=true)](https://ci.appveyor.com/project/ProIcons/hangman)
 
-A library for integrating Hangman game in different projects.
+A .NET library for integrating Hangman game in different projects.
 
 ## Classes
 Class | Methods | Properties | Events
