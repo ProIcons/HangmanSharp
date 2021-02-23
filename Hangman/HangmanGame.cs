@@ -7,6 +7,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Threading;
 using devian.gr.Hangman.Exceptions;
+using Newtonsoft.Json;
 using Timer = System.Timers.Timer;
 
 namespace devian.gr.Hangman
@@ -48,7 +49,7 @@ namespace devian.gr.Hangman
 
         #region Public Accessors
 
-        public String WordProvider { get; set; } = "http://randomword.setgetgo.com/get.php?len={0}";
+        public String WordProvider { get; set; } = "https://random-word-api.herokuapp.com/word";
 
         public String Rules
         {
@@ -153,7 +154,9 @@ namespace devian.gr.Hangman
                 var wordLength = _random.Next(_difficulty.MinimumLetters, 20);
                 try
                 {
-                    GivenWord = client.DownloadString(String.Format(WordProvider,wordLength)).ToUpper();
+                    var data = client.DownloadString(WordProvider).ToUpper();
+                    var strings = JsonConvert.DeserializeObject<String[]>(data);
+                    GivenWord = strings[0];
                 }
                 catch (WebException)
                 {
